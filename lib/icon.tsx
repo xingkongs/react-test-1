@@ -8,9 +8,8 @@ const Icon: React.FunctionComponent<IconProps> = (props) => {
     return (
         <span>
             <svg className="xrui-icon"
-                onClick={props.onClick}
-                onMouseEnter={props.onMouseEnter}
-                onMouseLeave={props.onMouseLeave}>
+                {...props}
+            >
                 <use xlinkHref={`#${props.name}`}/>
             </svg>
         </span>
