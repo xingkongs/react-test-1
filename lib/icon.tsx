@@ -9,7 +9,7 @@ const Icon: React.FunctionComponent<IconProps> = (props) => {
     const {className, ...restProps} = props;
     return (
         <span>
-            <svg className={classes("xrui",className)} {...restProps}>
+            <svg className={classes("xrui-icon",className)} {...restProps}>
                 <use xlinkHref={`#${props.name}`}/>
             </svg>
         </span>
