@@ -1,9 +1,11 @@
 import React from "react";
-import "../icons/wechat.svg"
+import "../icons/wechat.svg";
+import "../icons/qq.svg";
+import "../icons/alipay.svg";
 interface IconProps {
-    name:string
+    name: string
 }
-const Icon:React.FunctionComponent<IconProps> = (props)=>{
+const Icon: React.FunctionComponent<IconProps> = (props) => {
     return (
         <span>
             <svg>
@@ -11,5 +13,5 @@ const Icon:React.FunctionComponent<IconProps> = (props)=>{
             </svg>
         </span>
     );
-}
+};
 export default Icon;
