@@ -10,5 +10,6 @@ ReactDOM.render(<div>
         onClick={fn}
         onMouseEnter={()=>{console.log('enter')}}
         onMouseLeave={()=>{console.log('leave')}}
+        className="xxx"
     />
 </div>, document.body.querySelector("#root"));
