@@ -3,10 +3,10 @@ import React from "react";
 interface IconProps {
     name:string
 }
-const Icon:React.FunctionComponent<IconProps> = ()=>{
+const Icon:React.FunctionComponent<IconProps> = (props)=>{
     return (
         <span>
-            span
+            {props.name}
         </span>
     );
 }
