@@ -1,9 +1,9 @@
 import React, {Fragment, useState} from "react";
 import "./button.scss";
-interface Props extends React.DOMAttributes<React.ReactNode>{
-    value:string
+interface Props extends React.DOMAttributes<React.ReactNode> {
+    value?: string
 }
-const Button:React.FunctionComponent<Props> = ({value,...resetProps}) => {
+const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
     const [left, setLeft] = useState(0);
     const [top, setTop] = useState(0);
     const [buttonActive, setButtonActive] = useState(false);
@@ -27,5 +27,8 @@ const Button:React.FunctionComponent<Props> = ({value,...resetProps}) => {
             </button>
         </Fragment>
     );
+};
+Button.defaultProps = {
+    value: "default button"
 };
 export default Button;

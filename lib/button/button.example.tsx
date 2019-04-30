@@ -5,7 +5,7 @@ const fn = () => {
 };
 const ButtonExample: React.FunctionComponent = () => {
     return (
-        <Button onMouseEnter={fn} value="button"/>
+        <Button onMouseEnter={fn}/>
     );
 };
 export default ButtonExample;
