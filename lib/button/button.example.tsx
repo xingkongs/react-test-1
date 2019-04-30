@@ -1,7 +1,11 @@
 import React from "react";
-const Button: React.FunctionComponent = () => {
+import Button from "./button";
+const fn = () => {
+    console.log(1);
+};
+const ButtonExample: React.FunctionComponent = () => {
     return (
-        <div>hihihi</div>
+        <Button onMouseEnter={fn} value="button"/>
     );
 };
-export default Button;
+export default ButtonExample;

@@ -1,0 +1,39 @@
+.xrui-button {
+  height: 30px;
+  padding: 4px 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+
+  & .xrui-button_content {
+    position: relative;
+    z-index: 2;
+  }
+
+  & .xrui-button_span {
+    position: absolute;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: lighten(#ccc, 10%);
+    border-radius: 50%;
+    animation: bigger 0.3s ease-in-out forwards;
+    z-index: 1;
+  }
+}
+
+.xrui-button:focus {
+  outline: none;
+  border-color: #000;
+}
+
+@keyframes bigger {
+  0% {
+    transform: scale(0.5)
+  }
+  100% {
+    transform: scale(15)
+  }
+}
