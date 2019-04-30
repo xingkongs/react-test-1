@@ -31,7 +31,7 @@ module.exports = {
     // plugins: [
     //     new HtmlWebpackPlugin({
     //         title: "xrUI",
-    //         template: "index.html"
+    //         template: "example.html"
     //     })
     // ],
     // externals: {
