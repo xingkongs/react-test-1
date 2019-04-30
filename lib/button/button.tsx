@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import "./button.scss";
 interface Props extends React.DOMAttributes<React.ReactNode> {
     value?: string
@@ -19,6 +19,9 @@ const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
     const onEnd = () => {
         setButtonActive(false);
     };
+    useEffect(() => {
+        console.log(buttonActive, left, top);
+    }, [buttonActive, left, top]);
     return (
         <Fragment>
             <button {...resetProps} ref={buttonRef} className="xrui-button" onClick={onClick} onAnimationEnd={onEnd}>
