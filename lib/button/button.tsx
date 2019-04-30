@@ -22,7 +22,7 @@ const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
     return (
         <Fragment>
             <button {...resetProps} ref={buttonRef} className="xrui-button" onClick={onClick} onAnimationEnd={onEnd}>
-                <span className="xrui-button_content">{value}</span> {buttonActive ?
+                <span className="xrui-button_content">{value}</span>{buttonActive ?
                 <span className="xrui-button_span" style={{left: left, top: top}}/> : ""}
             </button>
         </Fragment>
@@ -31,4 +31,5 @@ const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
 Button.defaultProps = {
     value: "default button"
 };
+Button.displayName = "XRUI-Button";
 export default Button;
