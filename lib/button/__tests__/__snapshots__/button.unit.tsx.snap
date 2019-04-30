@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`button 是一个div 1`] = `
-<div>
-  button
-</div>
+<button
+  className="xrui-button"
+  onAnimationEnd={[Function]}
+  onClick={[Function]}
+>
+  <span
+    className="xrui-button_content"
+  >
+    button
+  </span>
+  
+</button>
 `;
