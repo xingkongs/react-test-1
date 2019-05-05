@@ -1,12 +1,16 @@
 import React, {Fragment} from "react";
-interface Props extends React.DOMAttributes<Element>{
-    visible:boolean
+import "./dialog.scss";
+interface Props extends React.DOMAttributes<Element> {
+    visible: boolean
 }
-const Dialog:React.FunctionComponent<Props> = (props) => {
+const Dialog: React.FunctionComponent<Props> = (props) => {
     return (
-        <Fragment>
-            {props.visible?<div>{props.children}</div>:""}
-        </Fragment>
+        props.visible ?
+            <Fragment>
+                <div className="xrui-dialog-mask"/>
+                <div className="xrui-dialog">{props.children}</div>
+            </Fragment>
+            : null
     );
 };
 export default Dialog;
