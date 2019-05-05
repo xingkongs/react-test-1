@@ -3,6 +3,7 @@ import "../index.scss";
 import "./dialog.scss";
 import Icon from "../icon/icon";
 import {scopedClassMaker} from "../helpers/scopedClass";
+import ReactDOM from "react-dom";
 interface Props extends React.DOMAttributes<Element> {
     visible: boolean,
     buttons: Array<React.ReactElement>,
@@ -20,27 +21,26 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
             props.onClose(e);
         }
     };
-    return (
-        props.visible ?
-            <Fragment>
-                <div className={sc("mask")} onClick={onClickMask}/>
-                <div className={sc()}>
-                    <div className={sc("close")} onClick={onClickClose}>
-                        <Icon name="close"/>
-                    </div>
-                    <header className={sc("header")}>title</header>
-                    <main className={sc("main")}>
-                        {props.children}
-                    </main>
-                    <footer className={sc("footer")}>
-                        {props.buttons.map((button, index) => {
-                            return React.cloneElement(button, {key: index});
-                        })}
-                    </footer>
+    const x = props.visible ?
+        <Fragment>
+            <div className={sc("mask")} onClick={onClickMask}/>
+            <div className={sc()}>
+                <div className={sc("close")} onClick={onClickClose}>
+                    <Icon name="close"/>
                 </div>
-            </Fragment>
-            : null
-    );
+                <header className={sc("header")}>title</header>
+                <main className={sc("main")}>
+                    {props.children}
+                </main>
+                <footer className={sc("footer")}>
+                    {props.buttons.map((button, index) => {
+                        return React.cloneElement(button, {key: index});
+                    })}
+                </footer>
+            </div>
+        </Fragment>
+        : null;
+    return ReactDOM.createPortal(x, document.body);
 };
 Dialog.defaultProps = {
     closeOnClickMask: false
