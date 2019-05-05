@@ -1,9 +1,12 @@
 import React, {useState} from "react";
-import Dialog, {alert} from "./dialog";
+import Dialog, {alert, confirm, modal} from "./dialog";
 import Button from "../button/button";
 const dialogExample = () => {
     const [x, setX] = useState(false);
     const [y, setY] = useState(false);
+    const openModal = () => {
+        const close = modal(<h1>hi<Button onClick={() => {close();}} value="close"/></h1>);
+    };
     return (
         <div>
             <div>
@@ -29,6 +32,8 @@ const dialogExample = () => {
             <div>
                 <h3>例3</h3>
                 <button onClick={() => {alert("1");}}>alert</button>
+                <button onClick={() => {confirm("1", () => {}, () => {});}}>confirm</button>
+                <button onClick={() => {openModal();}}>modal</button>
             </div>
         </div>
     );

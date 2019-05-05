@@ -4,6 +4,7 @@ import "./dialog.scss";
 import Icon from "../icon/icon";
 import {scopedClassMaker} from "../helpers/scopedClass";
 import ReactDOM from "react-dom";
+import Button from "../button/button";
 interface Props extends React.DOMAttributes<Element> {
     visible: boolean,
     buttons?: Array<React.ReactElement>,
@@ -61,5 +62,41 @@ const alert = (content: string) => {
     document.body.appendChild(div);
     ReactDOM.render(component, div);
 };
-export {alert};
+const confirm = (content: string, yes: () => void, no: () => void) => {
+    const onYes = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+        yes();
+    };
+    const onNo = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+        no();
+    };
+    const component = <Dialog visible={true} onClose={onNo} buttons={[
+        <Button onClick={onYes} value="yes"/>,
+        <Button onClick={onNo} value="no"/>
+    ]}>
+        {content}
+    </Dialog>;
+    const div = document.createElement("div");
+    document.body.appendChild(div);
+    ReactDOM.render(component, div);
+};
+const modal = (content: React.ReactNode | React.ReactFragment) => {
+    const onClose = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+    };
+    const component = (
+        <Dialog visible={true} onClose={onClose}>{content}</Dialog>
+    );
+    const div = document.createElement("div");
+    ReactDOM.render(component, div);
+    return onClose;
+};
+export {alert, confirm, modal};
 export default Dialog;
