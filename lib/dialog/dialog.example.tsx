@@ -11,7 +11,7 @@ const dialogExample = () => {
         <div>
             <div>
                 <h3>例1</h3>
-                <button onClick={() => {setX(!x);}}>click me</button>
+                <Button onClick={() => {setX(!x);}} value="click me"/>
                 <Dialog visible={x} buttons={[
                     <Button value="ok" onClick={() => setX(false)}/>,
                     <Button value="cancle" onClick={() => {setX(false);}}/>
@@ -21,7 +21,7 @@ const dialogExample = () => {
             </div>
             <div>
                 <h3>例2</h3>
-                <button onClick={() => {setY(!y);}}>click me</button>
+                <Button onClick={() => {setY(!y);}} value="click me"/>
                 <Dialog closeOnClickMask={true} visible={y} buttons={[
                     <Button value="ok" onClick={() => setY(false)}/>,
                     <Button value="cancle" onClick={() => {setY(false);}}/>
@@ -31,9 +31,15 @@ const dialogExample = () => {
             </div>
             <div>
                 <h3>例3</h3>
-                <button onClick={() => {alert("1");}}>alert</button>
-                <button onClick={() => {confirm("1", () => {}, () => {});}}>confirm</button>
-                <button onClick={() => {openModal();}}>modal</button>
+                <Button onClick={() => {alert("1");}} value="alert"/>
+                <Button onClick={() => {
+                    confirm("1", () => {
+                        console.log("yes");
+                    }, () => {
+                        console.log("no");
+                    });
+                }} value="confirm"/>
+                <Button onClick={() => {openModal();}} value="modal"/>
             </div>
         </div>
     );
