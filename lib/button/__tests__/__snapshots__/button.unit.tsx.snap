@@ -4,7 +4,7 @@ exports[`button 是一个div 1`] = `
 <button
   className="xrui-button"
   onAnimationEnd={[Function]}
-  onClick={[Function]}
+  onMouseDown={[Function]}
 >
   <span
     className="xrui-button_content"
