@@ -1,7 +1,9 @@
 import React, {Fragment} from "react";
+import "../index.scss";
 import "./dialog.scss";
 import Icon from "../icon/icon";
 import {scopedClassMaker} from "../helpers/scopedClass";
+import Button from "../button/button";
 interface Props extends React.DOMAttributes<Element> {
     visible: boolean
 }
@@ -21,8 +23,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
                         {props.children}
                     </main>
                     <footer className={sc("footer")}>
-                        <button>ok</button>
-                        <button>cancle</button>
+                        <Button>ok</Button> <Button>cancle</Button>
                     </footer>
                 </div>
             </Fragment>

@@ -1,22 +1,59 @@
 .xrui-dialog {
-  width:300px;
-  height:200px;
-  padding:5px 2em;
+  min-width: 300px;
+  height: 200px;
   background: #fff;
   position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  &-mask{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+
+  &-mask {
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &-close {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    left: 100%;
+    bottom: 100%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #000;
+  }
+
+  &-header {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  &-main {
+    padding: 8px 10px;
+    flex-grow: 1;
+  }
+
+  &-footer {
+    padding: 8px 10px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    & button:not(:last-of-type){
+      margin-right:0.2em;
+    }
   }
 }
