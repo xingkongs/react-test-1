@@ -6,7 +6,7 @@ import {scopedClassMaker} from "../helpers/scopedClass";
 import ReactDOM from "react-dom";
 interface Props extends React.DOMAttributes<Element> {
     visible: boolean,
-    buttons: Array<React.ReactElement>,
+    buttons?: Array<React.ReactElement>,
     onClose: React.MouseEventHandler,
     closeOnClickMask?: boolean
 }
@@ -32,11 +32,15 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
                 <main className={sc("main")}>
                     {props.children}
                 </main>
-                <footer className={sc("footer")}>
-                    {props.buttons.map((button, index) => {
-                        return React.cloneElement(button, {key: index});
-                    })}
-                </footer>
+                {
+                    props.buttons ?
+                        <footer className={sc("footer")}>
+                            {props.buttons.map((button, index) => {
+                                return React.cloneElement(button, {key: index});
+                            })}
+                        </footer>
+                        : null
+                }
             </div>
         </Fragment>
         : null;
