@@ -34,7 +34,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
                     {props.children}
                 </main>
                 {
-                    props.buttons ?
+                    props.buttons && props.buttons.length > 0 ?
                         <footer className={sc("footer")}>
                             {props.buttons.map((button, index) => {
                                 return React.cloneElement(button, {key: index});
