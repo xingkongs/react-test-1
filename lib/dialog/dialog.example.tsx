@@ -1,3 +1,5 @@
+import React, {useState} from "react";
+import Dialog, {alert} from "./dialog";
 import Button from "../button/button";
 const dialogExample = () => {
     const [x, setX] = useState(false);
@@ -24,9 +26,11 @@ const dialogExample = () => {
                     <div>dialog</div>
                 </Dialog>
             </div>
+            <div>
+                <h3>例3</h3>
+                <button onClick={() => {alert("1");}}>alert</button>
+            </div>
         </div>
     );
 };
-import React, {useState} from "react";
-import Dialog from "./dialog";
 export default dialogExample;
