@@ -3,19 +3,23 @@ import "../index.scss";
 import "./dialog.scss";
 import Icon from "../icon/icon";
 import {scopedClassMaker} from "../helpers/scopedClass";
-import Button from "../button/button";
 interface Props extends React.DOMAttributes<Element> {
-    visible: boolean
+    visible: boolean,
+    buttons: Array<React.ReactElement>,
+    onClose: React.MouseEventHandler
 }
 const scopedClass = scopedClassMaker("xrui-dialog");
 const sc = scopedClass;
 const Dialog: React.FunctionComponent<Props> = (props) => {
+    const onClickClose: React.MouseEventHandler = (e) => {
+        props.onClose(e);
+    };
     return (
         props.visible ?
             <Fragment>
                 <div className={sc("mask")}/>
                 <div className={sc()}>
-                    <div className={sc("close")}>
+                    <div className={sc("close")} onClick={onClickClose}>
                         <Icon name="close"/>
                     </div>
                     <header className={sc("header")}>title</header>
@@ -23,7 +27,9 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
                         {props.children}
                     </main>
                     <footer className={sc("footer")}>
-                        <Button>ok</Button> <Button>cancle</Button>
+                        {props.buttons.map((button, index) => {
+                            return React.cloneElement(button, {key: index});
+                        })}
                     </footer>
                 </div>
             </Fragment>
