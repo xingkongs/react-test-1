@@ -24,6 +24,7 @@ describe("classes", function () {
 describe("scopedClassMaker", () => {
     it("接受字符串或对象参数", () => {
         const sc = scopedClassMaker("xrui-layout");
+        expect(sc("")).toEqual("xrui-layout");
         expect(sc()).toEqual("xrui-layout");
         expect(sc("header")).toEqual("xrui-layout-header");
         expect(sc({y: true, z: false})).toEqual("xrui-layout-y");

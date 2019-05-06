@@ -10,19 +10,21 @@ interface classToggles {
 }
 function scopedClassMaker(prefix: string) {
     return function (name?: string | classToggles, options?: Options) {
-        let name2, result;
-        if (typeof name === "string" || name === undefined) {
-            result = [prefix, name].filter(Boolean).join("-");
-        } else {
-            name2 = Object.entries(name).filter(km => km[1]).map(k => k[0]);
-            result = name2.map((n) => {
-                return [prefix, n].filter(Boolean).join("-");
-            }).join(" ");
-        }
+        const objNames = (typeof name === "string" || name === undefined) ?
+            {[name === undefined ? "" : name]: true} :
+            name;
+        const scoped = Object
+            .entries(objNames)
+            .filter(km => km[1] !== false)
+            .map(k => k[0])
+            .map((name) => [prefix, name]
+                .filter(Boolean)
+                .join("-"))
+            .join(" ");
         if (options && options.extra) {
-            return [result, options.extra].join(" ");
+            return [scoped, options.extra].join(" ");
         } else {
-            return result;
+            return scoped;
         }
     };
 }
