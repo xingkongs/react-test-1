@@ -8,8 +8,8 @@ interface Options {
 interface classToggles {
     [k: string]: boolean
 }
-function scopedClassMaker(prefix: string) {
-    return (name?: string | classToggles, options?: Options) =>
+const scopedClassMaker = (prefix: string) =>
+    (name?: string | classToggles, options?: Options) =>
         Object
             .entries(typeof name === "object" ? name : {[name === undefined ? "" : name]: true})
             .filter(km => km[1] !== false)
@@ -19,5 +19,4 @@ function scopedClassMaker(prefix: string) {
                 .join("-"))
             .concat(options && options.extra || [])
             .join(" ");
-}
 export {scopedClassMaker};
