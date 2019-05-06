@@ -9,7 +9,9 @@ interface Props extends React.DOMAttributes<Element> {
     visible: boolean,
     buttons?: Array<React.ReactElement>,
     onClose: React.MouseEventHandler,
-    closeOnClickMask?: boolean
+    closeOnClickMask?: boolean,
+    enableMask?: boolean,
+    title?: string
 }
 const scopedClass = scopedClassMaker("xrui-dialog");
 const sc = scopedClass;
@@ -24,12 +26,12 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
     };
     const result = props.visible ?
         <Fragment>
-            <div className={sc("mask")} onClick={onClickMask}/>
+            {props.enableMask && <div className={sc("mask")} onClick={onClickMask}/>}
             <div className={sc()}>
                 <div className={sc("close")} onClick={onClickClose}>
                     <Icon name="close"/>
                 </div>
-                <header className={sc("header")}>title</header>
+                <header className={sc("header")}>{props.title}</header>
                 <main className={sc("main")}>
                     {props.children}
                 </main>
@@ -48,7 +50,9 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
     return ReactDOM.createPortal(result, document.body);
 };
 Dialog.defaultProps = {
-    closeOnClickMask: false
+    closeOnClickMask: false,
+    enableMask: true,
+    title: "title"
 };
 const modal = (content: React.ReactNode, buttons?: Array<React.ReactElement>, afterClose?: () => void) => {
     const close = () => {

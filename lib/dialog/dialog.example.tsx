@@ -12,7 +12,7 @@ const dialogExample = () => {
             <div>
                 <h3>例1</h3>
                 <Button onClick={() => {setX(!x);}} value="click me"/>
-                <Dialog visible={x} buttons={[
+                <Dialog visible={x} title="标题" enableMask={false} buttons={[
                     <Button value="ok" onClick={() => setX(false)}/>,
                     <Button value="cancle" onClick={() => {setX(false);}}/>
                 ]} onClose={() => {setX(false);}}>
@@ -31,15 +31,13 @@ const dialogExample = () => {
             </div>
             <div>
                 <h3>例3</h3>
-                <Button onClick={() => {alert("1");}} value="alert"/>
-                <Button onClick={() => {
-                    confirm("1", () => {
-                        console.log("yes");
-                    }, () => {
-                        console.log("no");
-                    });
-                }} value="confirm"/>
-                <Button onClick={() => {openModal();}} value="modal"/>
+                <Button onClick={() => {alert("1");}} value="alert"/> <Button onClick={() => {
+                confirm("1", () => {
+                    console.log("yes");
+                }, () => {
+                    console.log("no");
+                });
+            }} value="confirm"/> <Button onClick={() => {openModal();}} value="modal"/>
             </div>
         </div>
     );
