@@ -22,7 +22,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
             props.onClose(e);
         }
     };
-    const x = props.visible ?
+    const result = props.visible ?
         <Fragment>
             <div className={sc("mask")} onClick={onClickMask}/>
             <div className={sc()}>
@@ -45,7 +45,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
             </div>
         </Fragment>
         : null;
-    return ReactDOM.createPortal(x, document.body);
+    return ReactDOM.createPortal(result, document.body);
 };
 Dialog.defaultProps = {
     closeOnClickMask: false
@@ -57,13 +57,10 @@ const modal = (content: React.ReactNode, buttons?: Array<React.ReactElement>, af
         div.remove();
     };
     const component = (
-        <Dialog
-            visible={true}
-            onClose={() => {
-                close();
-                afterClose && afterClose();
-            }}
-            buttons={buttons}>
+        <Dialog visible={true} onClose={() => {
+            close();
+            afterClose && afterClose();
+        }} buttons={buttons}>
             {content}
         </Dialog>);
     const div = document.createElement("div");
