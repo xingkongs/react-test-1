@@ -12,7 +12,7 @@ const Layout: React.FunctionComponent<Props> = (props) => {
         return node.type === Aside;
     }, false);
     return (
-        <div className={sc("", {extra: [className, hasAside && "xrui-hasAside"].join(" ")})} {...reset}>
+        <div className={sc({"": true, hasAside}, {extra: className})} {...reset}>
             {props.children}
         </div>
     );
