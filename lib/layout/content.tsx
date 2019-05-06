@@ -1,5 +1,5 @@
 import React from "react";
-import {scopedClassMaker} from "../helpers/scopedClass";
+import {scopedClassMaker} from "../helpers/classes";
 const sc = scopedClassMaker("xrui-layout");
 interface Props extends React.HTMLAttributes<HTMLElement> {
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./layout.scss";
-import {scopedClassMaker} from "../helpers/scopedClass";
 import Aside from "./aside";
+import {scopedClassMaker} from "../helpers/classes";
 const sc = scopedClassMaker("xrui-layout");
 interface Props extends React.HTMLAttributes<HTMLElement> {
     children: Array<React.ReactElement>

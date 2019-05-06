@@ -2,9 +2,9 @@ import React, {Fragment} from "react";
 import "../index.scss";
 import "./dialog.scss";
 import Icon from "../icon/icon";
-import {scopedClassMaker} from "../helpers/scopedClass";
 import ReactDOM from "react-dom";
 import Button from "../button/button";
+import {scopedClassMaker} from "../helpers/classes";
 interface Props extends React.DOMAttributes<Element> {
     visible: boolean,
     buttons?: Array<React.ReactElement>,
