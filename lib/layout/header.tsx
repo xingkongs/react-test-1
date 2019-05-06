@@ -6,7 +6,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 const Header: React.FunctionComponent<Props> = (props) => {
     const {className, ...reset} = props;
     return (
-        <div className={sc("header", {extra: className})} {...reset}>header</div>
+        <div className={sc("header", {extra: className})} {...reset}>{props.children}</div>
     );
 };
 export default Header;
