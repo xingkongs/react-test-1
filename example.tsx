@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Link} from "react-router-dom";
 import IconExample from "./lib/icon/icon.example";
 import ButtonExample from "./lib/button/button.example";
 import DialogExample from "./lib/dialog/dialog.example";
+import LayoutExample from "./lib/layout/layout.exampe";
 ReactDOM.render(
     <Router>
         <div>
@@ -17,11 +18,13 @@ ReactDOM.render(
                         <li><Link to="/icon">Icon</Link></li>
                         <li><Link to="/button">Button</Link></li>
                         <li><Link to="/dialog">Dialog</Link></li>
+                        <li><Link to="/layout">Layout</Link></li>
                     </ul>
                 </aside>
                 <main>
                     <Route exact path="/" component={IconExample}/> <Route path="/icon" component={IconExample}/>
                     <Route path="/button" component={ButtonExample}/> <Route path="/dialog" component={DialogExample}/>
+                    <Route path="/layout" component={LayoutExample} />
                 </main>
             </div>
         </div>
