@@ -8,8 +8,6 @@ module.exports = Object.assign({}, base, {
     },
     output: {
         path: path.resolve(__dirname, "doc"),
-        library: "xrui",
-        libraryTarget: "umd"
     },
     plugins: [
         new HtmlWebpackPlugin({

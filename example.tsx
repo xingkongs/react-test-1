@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
-import {Layout, Aside, Header, Content, Footer} from "./lib/layout/layout";
+import "./example.scss";
+import {Layout, Header, Aside, Content, Footer} from "./lib/layout/layout";
 import IconDemo from "./lib/icon/icon.demo";
 import ButtonDemo from "./lib/button/button.demo";
 import DialogDemo from "./lib/dialog/dialog.demo";
 import LayoutDemo from "./lib/layout/layout.demo";
-import "./example.scss";
 const logo = require("./logo.png");
 ReactDOM.render(
     <Router>
