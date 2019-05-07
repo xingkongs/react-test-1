@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Dialog, {alert, confirm, modal} from "./dialog";
 import Button from "../button/button";
-const dialogExample = () => {
+const DialogExample = () => {
     const [x, setX] = useState(false);
     const [y, setY] = useState(false);
     const openModal = () => {
@@ -42,4 +42,4 @@ const dialogExample = () => {
         </div>
     );
 };
-export default dialogExample;
+export default DialogExample;

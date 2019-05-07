@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
-import IconExample from "./lib/icon/icon.example";
-import ButtonExample from "./lib/button/button.example";
-import DialogExample from "./lib/dialog/dialog.example";
-import LayoutExample from "./lib/layout/layout.exampe";
 import {Layout, Aside, Header, Content, Footer} from "./lib/layout/layout";
+import IconDemo from "./lib/icon/icon.demo";
+import ButtonDemo from "./lib/button/button.demo";
+import DialogDemo from "./lib/dialog/dialog.demo";
+import LayoutDemo from "./lib/layout/layout.demo";
 import "./example.scss";
 const logo = require("./logo.png");
 ReactDOM.render(
@@ -28,9 +28,9 @@ ReactDOM.render(
                     </ul>
                 </Aside>
                 <Content className="page-content">
-                    <Route exact path="/" component={IconExample}/> <Route path="/icon" component={IconExample}/>
-                    <Route path="/button" component={ButtonExample}/> <Route path="/dialog" component={DialogExample}/>
-                    <Route path="/layout" component={LayoutExample}/>
+                    <Route exact path="/" component={IconDemo}/> <Route path="/icon" component={IconDemo}/>
+                    <Route path="/button" component={ButtonDemo}/> <Route path="/dialog" component={DialogDemo}/>
+                    <Route path="/layout" component={LayoutDemo}/>
                 </Content>
             </Layout>
             <Footer className="page-footer">
