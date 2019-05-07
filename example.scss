@@ -1,58 +1,76 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 *::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 h1, h2, h3 {
-    font-weight: normal;
+  font-weight: normal;
 }
 ul, ol {
-    list-style: none;
+  list-style: none;
 }
 .page {
-    min-height: 100vh;
-    &-header {
-        background: #f0f0f0;
-        color: #020202;
-        margin-bottom: 8px;
-        & .wrapped {
-            display: flex;
-            align-items: center;
+  min-height: 100vh;
+  &-header {
+    background: #f0f0f0;
+    margin-bottom: 8px;
+    height: 50px;
+    & .wrapped {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    & .header-logo {
+      margin-right: 0.4em;
+      outline: 1px solid #ccc;
+    }
+  }
+  &-aside {
+    min-width: 12em;
+    border-right: 1px solid #ccc;
+    margin-right: 8px;
+    & h2 {
+      padding: 0 16px;
+      margin-bottom: 16px;
+    }
+    & > ul {
+      & a {
+        display: block;
+        padding: 8px 16px;
+        &:hover {
+          color: rgba(234, 67, 53, 0.8);
         }
-        & .header-logo {
-            max-height: 50px;
-            margin-right: 0.4em;
+        &.active {
+          color: #fff;
+          background: rgba(234, 67, 53, 0.8);
         }
+      }
     }
-    &-aside {
-        min-width: 12em;
-        padding: 8px;
-        border-right: 1px solid #ccc;
-        margin-right: 8px;
-        & > ul {
-            padding: 0 8px;
-        }
+  }
+  &-content {
+    flex-grow: 1;
+    padding: 16px 24px;
+    & h3 {
+      margin: 16px auto;
     }
-    &-content {
-        flex-grow: 1;
-        padding: 16px 24px;
-    }
-    &-footer {
-        padding: 8px;
-        margin-top: 8px;
-        background: #ccc;
-    }
+  }
+  &-footer {
+    padding: 8px;
+    margin-top: 8px;
+    background: #ccc;
+    text-align: center;
+  }
 }
 .wrapped {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 

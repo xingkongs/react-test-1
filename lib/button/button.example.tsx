@@ -3,9 +3,17 @@ import Button from "./button";
 const fn = () => {
     console.log(1);
 };
-const ButtonExample: React.FunctionComponent = () => {
+export default () => {
     return (
-        <Button onMouseEnter={fn}/>
+        <div>
+            <div>
+                <h3>例1</h3>
+                <Button onMouseEnter={fn}/>
+            </div>
+            <div>
+                <h3>例2</h3>
+                <Button value="button" onClick={fn}/>
+            </div>
+        </div>
     );
 };
-export default ButtonExample;

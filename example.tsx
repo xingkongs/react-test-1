@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {HashRouter as Router, Route, Link} from "react-router-dom";
+import {HashRouter as Router, Route, NavLink} from "react-router-dom";
 import IconExample from "./lib/icon/icon.example";
 import ButtonExample from "./lib/button/button.example";
 import DialogExample from "./lib/dialog/dialog.example";
@@ -13,7 +13,7 @@ ReactDOM.render(
         <Layout className="page">
             <Header className="page-header">
                 <div className="wrapped">
-                    <img className="header-logo" src={logo} alt=""/>
+                    <img width="40" height="40" className="header-logo" src={logo} alt=""/>
                     XRUI
                 </div>
             </Header>
@@ -21,10 +21,10 @@ ReactDOM.render(
                 <Aside className="page-aside">
                     <h2>组件</h2>
                     <ul>
-                        <li><Link to="/icon">Icon</Link></li>
-                        <li><Link to="/button">Button</Link></li>
-                        <li><Link to="/dialog">Dialog</Link></li>
-                        <li><Link to="/layout">Layout</Link></li>
+                        <li><NavLink to="/icon">Icon</NavLink></li>
+                        <li><NavLink to="/button">Button</NavLink></li>
+                        <li><NavLink to="/dialog">Dialog</NavLink></li>
+                        <li><NavLink to="/layout">Layout</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="page-content">
@@ -34,7 +34,7 @@ ReactDOM.render(
                 </Content>
             </Layout>
             <Footer className="page-footer">
-                <div className="wrapped">footer</div>
+                <div className="wrapped">&copy; xingkongs</div>
             </Footer>
         </Layout>
     </Router>,
