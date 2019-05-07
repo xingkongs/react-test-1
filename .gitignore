@@ -6,6 +6,7 @@ doc/
 # Logs
 logs
 *.log
+doc.sh*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
