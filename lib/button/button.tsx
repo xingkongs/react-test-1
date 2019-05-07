@@ -3,7 +3,7 @@ import "./button.scss";
 interface Props extends React.DOMAttributes<React.ReactNode> {
     value?: string
 }
-const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
+const Button: React.FunctionComponent<Props> = ({value, children, ...resetProps}) => {
     const [left, setLeft] = useState(0);
     const [top, setTop] = useState(0);
     const [buttonActive, setButtonActive] = useState(false);
@@ -25,8 +25,8 @@ const Button: React.FunctionComponent<Props> = ({value, ...resetProps}) => {
     return (
         <Fragment>
             <button {...resetProps} ref={buttonRef} className="xrui-button" onMouseDown={onClick} onAnimationEnd={onEnd}>
-                <span className="xrui-button_content">{value}</span>{buttonActive ?
-                <span className="xrui-button_span" style={{left: left, top: top}}/> : ""}
+                <span className="xrui-button_content">{value}{children}</span>
+                {buttonActive ? <span className="xrui-button_span" style={{left: left, top: top}}/> : ""}
             </button>
         </Fragment>
     );
