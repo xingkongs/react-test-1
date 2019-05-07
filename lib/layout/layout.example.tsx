@@ -8,7 +8,7 @@ import "./layout.example.scss";
 export default () => {
     return (
         <div>
-            <div>
+            <div className="box">
                 <h3>例1</h3>
                 <Layout className="hi" style={{width: 500, height: 300}}>
                     <Header className="x">header</Header>
@@ -16,7 +16,7 @@ export default () => {
                     <Footer className="x">footer</Footer>
                 </Layout>
             </div>
-            <div>
+            <div className="box">
                 <h3>例2</h3>
                 <Layout className="hi" style={{width: 500, height: 300}}>
                     <Header className="x">header</Header>
@@ -27,7 +27,7 @@ export default () => {
                     <Footer className="x">footer</Footer>
                 </Layout>
             </div>
-            <div>
+            <div className="box">
                 <h3>例3</h3>
                 <Layout className="hi" style={{width: 500, height: 300}}>
                     <Header className="x">header</Header>
@@ -38,7 +38,7 @@ export default () => {
                     <Footer className="x">footer</Footer>
                 </Layout>
             </div>
-            <div>
+            <div className="box">
                 <h3>例4</h3>
                 <Layout style={{width: 500, height: 300}}>
                     <Aside className="z">aside</Aside>

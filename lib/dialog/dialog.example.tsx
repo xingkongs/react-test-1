@@ -9,7 +9,7 @@ const DialogExample = () => {
     };
     return (
         <div>
-            <div>
+            <div className="box">
                 <h3>例1</h3>
                 <Button onClick={() => {setX(!x);}} value="click me"/>
                 <Dialog visible={x} title="标题" enableMask={false} buttons={[
@@ -19,7 +19,7 @@ const DialogExample = () => {
                     <div>dialog</div>
                 </Dialog>
             </div>
-            <div>
+            <div className="box">
                 <h3>例2</h3>
                 <Button onClick={() => {setY(!y);}} value="click me"/>
                 <Dialog closeOnClickMask={true} visible={y} buttons={[
@@ -29,7 +29,7 @@ const DialogExample = () => {
                     <div>dialog</div>
                 </Dialog>
             </div>
-            <div>
+            <div className="box">
                 <h3>例3</h3>
                 <Button onClick={() => {alert("1");}} value="alert"/> <Button onClick={() => {
                 confirm("1", () => {

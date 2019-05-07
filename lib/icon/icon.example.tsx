@@ -5,7 +5,7 @@ const fn: React.MouseEventHandler<SVGElement> = (e) => {
 };
 const IconExample: React.FunctionComponent = () => {
     return (
-        <div>
+        <div className="box">
             <Icon name='wechat' onClick={fn} onMouseEnter={() => {console.log("enter");}} onMouseLeave={() => {console.log("leave");}}/>
             <Icon name='qq'/>
             <Icon name='alipay'/>

@@ -7,15 +7,15 @@ const fn = () => {
 export default () => {
     return (
         <div>
-            <div>
+            <div className="box">
                 <h3>例1</h3>
                 <Button onMouseEnter={fn}/>
             </div>
-            <div>
+            <div className="box">
                 <h3>例2</h3>
                 <Button value="button" onClick={fn}/>
             </div>
-            <div>
+            <div className="box">
                 <h3>例3</h3>
                 <Button value="button" onClick={fn}>
                     <Icon name="alipay"/>

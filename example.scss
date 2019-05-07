@@ -63,6 +63,9 @@ ul, ol {
     & pre {
       margin-top: 16px;
     }
+    & .middleware .xrui-button {
+      margin-top: 16px;
+    }
   }
   &-footer {
     padding: 8px;
@@ -76,4 +79,11 @@ ul, ol {
   max-width: 1200px;
   margin: 0 auto;
 }
-
+.prism-code.language-jsx {
+  padding: 16px;
+}
+.box {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+}
