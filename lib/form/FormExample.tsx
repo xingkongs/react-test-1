@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Form, {formValue} from "./form";
 import Validator from "./validator";
+import Button from "../button/button";
 const FormExample: React.FunctionComponent = () => {
     const [formData, setFormData] = useState<formValue>({
         name: "xingkongs",
@@ -26,13 +27,13 @@ const FormExample: React.FunctionComponent = () => {
     };
     return (
         <Form value={formData} fields={fields}
-              buttons={[
-                  <button type="submit">ok</button>,
-                  <button type="reset">cancel</button>
-              ]}
-              errors={errors}
-              onSubmit={onSubmit}
-              onChange={onChange}
+            buttons={[
+                <Button type="submit" value="ok"/>,
+                <Button type="reset" value="cancel"/>
+            ]}
+            errors={errors}
+            onSubmit={onSubmit}
+            onChange={onChange}
         />
     );
 };

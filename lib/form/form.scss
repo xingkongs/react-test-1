@@ -1,0 +1,32 @@
+.xrui-form {
+  &-table {
+    border-collapse: separate;
+    border-spacing: 10px;
+  }
+  &-tr {
+    margin-bottom: 2em;
+  }
+  &-td {
+    .xrui-button:not(:last-of-type) {
+      margin-right: 0.2em;
+    }
+  }
+  input {
+    padding: 4px 1em;
+    border: 1px solid #ccc;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+    &:focus {
+      border-color: #000;
+    }
+  }
+  .error {
+    & input {
+      border: 1px solid red;
+    }
+    & .error {
+      color: red;
+    }
+  }
+}
