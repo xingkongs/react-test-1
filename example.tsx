@@ -7,7 +7,7 @@ import IconDemo from "./lib/icon/icon.demo";
 import ButtonDemo from "./lib/button/button.demo";
 import DialogDemo from "./lib/dialog/dialog.demo";
 import LayoutDemo from "./lib/layout/layout.demo";
-import FormExample from "./lib/form/FormExample";
+import FormDemo from "./lib/form/form.demo";
 const logo = require("./logo.png");
 ReactDOM.render(
     <Router>
@@ -35,7 +35,7 @@ ReactDOM.render(
                     <Route path="/button" component={ButtonDemo}/>
                     <Route path="/dialog" component={DialogDemo}/>
                     <Route path="/layout" component={LayoutDemo}/>
-                    <Route path="/form" component={FormExample}/>
+                    <Route path="/form" component={FormDemo}/>
                 </Content>
             </Layout>
             <Footer className="page-footer">
