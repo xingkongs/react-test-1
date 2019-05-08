@@ -1,9 +1,12 @@
 import React, {Fragment, useState} from "react";
 import "./button.scss";
 interface Props extends React.DOMAttributes<React.ReactNode> {
-    value?: string
+    value?: string,
+    type?: "submit" | "button" | "reset",
+    disabled?: boolean,
+    iconPosition?: "left" | "right"
 }
-const Button: React.FunctionComponent<Props> = ({value, children, ...resetProps}) => {
+const Button: React.FunctionComponent<Props> = ({value, children, iconPosition, ...resetProps}) => {
     const [left, setLeft] = useState(0);
     const [top, setTop] = useState(0);
     const [buttonActive, setButtonActive] = useState(false);
@@ -25,7 +28,10 @@ const Button: React.FunctionComponent<Props> = ({value, children, ...resetProps}
     return (
         <Fragment>
             <button {...resetProps} ref={buttonRef} className="xrui-button" onMouseDown={onClick} onAnimationEnd={onEnd}>
-                <span className="xrui-button_content">{value}{children}</span>
+                {iconPosition === "right" ?
+                    <span className="xrui-button_content">{value}{children}</span> :
+                    <span className="xrui-button_content">{children}{value}</span>
+                }
                 {buttonActive ? <span className="xrui-button_span" style={{left: left, top: top}}/> : ""}
             </button>
         </Fragment>
