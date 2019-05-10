@@ -14,8 +14,12 @@ ReactDOM.render(
         <Layout className="page">
             <Header className="page-header">
                 <div className="wrapped">
-                    <img width="40" height="40" className="header-logo" src={logo} alt=""/>
-                    XRUI
+                    <a href="./">
+                        <span>
+                            <img width="40" height="40" className="header-logo" src={logo} alt=""/>
+                        XRUI
+                        </span>
+                    </a>
                 </div>
             </Header>
             <Layout>
