@@ -8,6 +8,7 @@ import ButtonDemo from "./lib/button/button.demo";
 import DialogDemo from "./lib/dialog/dialog.demo";
 import LayoutDemo from "./lib/layout/layout.demo";
 import FormDemo from "./lib/form/form.demo";
+import InputDemo from "./lib/input/input.demo";
 const logo = require("./logo.png");
 ReactDOM.render(
     <Router>
@@ -31,6 +32,8 @@ ReactDOM.render(
                         <li><NavLink to="/dialog">Dialog</NavLink></li>
                         <li><NavLink to="/layout">Layout</NavLink></li>
                         <li><NavLink to="/form">Form</NavLink></li>
+                        <li><NavLink to="/inputs">Input</NavLink></li>
+
                     </ul>
                 </Aside>
                 <Content className="page-content">
@@ -40,6 +43,7 @@ ReactDOM.render(
                     <Route path="/dialog" component={DialogDemo}/>
                     <Route path="/layout" component={LayoutDemo}/>
                     <Route path="/form" component={FormDemo}/>
+                    <Route path="/inputs" component={InputDemo}/>
                 </Content>
             </Layout>
             <Footer className="page-footer">

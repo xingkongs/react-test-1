@@ -1,0 +1,14 @@
+.xrui-input {
+    line-height: 22px;
+    padding: 4px 1em;
+    border: 1px solid #ccc;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 0 4px fade_out(blue, 1);
+    transition: box-shadow 0.2s ease-in;
+    &:focus {
+        border-color: blue;
+        box-shadow: 0 0 10px fade_out(blue, 0.5);
+    }
+}

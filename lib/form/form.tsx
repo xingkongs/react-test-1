@@ -1,6 +1,7 @@
 import React from "react";
 import {scopedClassMaker} from "../helpers/classes";
 import "./form.scss";
+import Input from "../input/input";
 export interface formValue {
     [K: string]: any
 }
@@ -34,9 +35,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
                         <tr key={t.name} className={sc("tr", {extra: props.errors[t.name] && "error"})}>
                             <td className={sc("td")} key={t.name + "0"}>{t.label}</td>
                             <td className={sc("td")} key={t.name + "1"}>
-                                <input type={t.input.type}
-                                    value={formData[t.name]}
-                                    onChange={(e) => onChange(t.name, e.target.value, e)}/>
+                                <Input type={t.input.type}
+                                       value={formData[t.name]}
+                                       onChange={(e) => onChange(t.name, e.target.value, e)}/>
                             </td>
                             <td className={sc("td error")} key={t.name + "2"}>
                                 {props.errors[t.name]}
