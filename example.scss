@@ -24,10 +24,10 @@ ul, ol {
     height: 50px;
     & .wrapped {
       height: 100%;
-      & span{
-          display: inline-flex;
-          vertical-align: middle;
-          align-items: center;
+      & span {
+        display: inline-flex;
+        vertical-align: middle;
+        align-items: center;
       }
       display: flex;
       align-items: center;
@@ -68,7 +68,7 @@ ul, ol {
     & pre {
       margin-top: 16px;
     }
-    & .middleware .xrui-button {
+    & .middleware > .xrui-button {
       margin-top: 16px;
     }
   }
