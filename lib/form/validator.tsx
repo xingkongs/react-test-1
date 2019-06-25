@@ -26,10 +26,10 @@ const Validator = (formValue: formValue, rules: FormRules): FormErrors => {
         if (rule.required && isEmpty(value)) {
             addErrors(rule.key, "必填");
         }
-        if (rule.minLength && !isEmpty(value) && value.length < rule.minLength) {
+        if (rule.minLength && value.length < rule.minLength) {
             addErrors(rule.key, "太短");
         }
-        if (rule.maxLength && !isEmpty(value) && value.length > rule.maxLength) {
+        if (rule.maxLength && value.length > rule.maxLength) {
             addErrors(rule.key, "太长");
         }
         if (rule.pattern && !isEmpty(value) && !(rule.pattern.test(value))) {
