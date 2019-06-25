@@ -11,7 +11,8 @@ interface Props {
     buttons: Array<React.ReactElement>,
     onSubmit: React.FormEventHandler<HTMLFormElement>,
     onChange: (value: formValue) => void,
-    errors: { [K: string]: string[] }
+    errors: { [K: string]: string[] },
+    errorsDisplayMode?: "first" | "all"
 }
 const sc = scopedClassMaker("xrui-form");
 const Form: React.FunctionComponent<Props> = (props) => {
@@ -35,12 +36,14 @@ const Form: React.FunctionComponent<Props> = (props) => {
                         <tr key={t.name} className={sc("tr", {extra: props.errors[t.name] && "error"})}>
                             <td className={sc("td")} key={t.name + "0"}>{t.label}</td>
                             <td className={sc("td")} key={t.name + "1"}>
-                                <Input type={t.input.type}
-                                       value={formData[t.name]}
-                                       onChange={(e) => onChange(t.name, e.target.value, e)}/>
+                                <Input type={t.input.type} value={formData[t.name]} onChange={(e) => onChange(t.name, e.target.value, e)}/>
                             </td>
                             <td className={sc("td error")} key={t.name + "2"}>
-                                {props.errors[t.name]}
+                                {props.errors[t.name] ?
+                                    props.errorsDisplayMode === "first" ?
+                                        props.errors[t.name][0] :
+                                        props.errors[t.name].join() : ""
+                                }
                             </td>
                         </tr>
                     )}
@@ -57,5 +60,8 @@ const Form: React.FunctionComponent<Props> = (props) => {
             </form>
         </div>
     );
+};
+Form.defaultProps = {
+    errorsDisplayMode: "first"
 };
 export default Form;

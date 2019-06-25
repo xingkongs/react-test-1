@@ -26,15 +26,13 @@ const FormExample: React.FunctionComponent = () => {
         setFormData(newValue);
     };
     return (
-        <Form value={formData} fields={fields}
-            buttons={[
+        <div>
+            {JSON.stringify(errors)}
+            <Form value={formData} fields={fields} buttons={[
                 <Button type="submit" value="ok"/>,
                 <Button type="reset" value="cancel"/>
-            ]}
-            errors={errors}
-            onSubmit={onSubmit}
-            onChange={onChange}
-        />
+            ]} errors={errors} onSubmit={onSubmit} onChange={onChange} />
+        </div>
     );
 };
 export default FormExample;

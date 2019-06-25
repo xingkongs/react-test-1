@@ -24,7 +24,8 @@
   }
   .error {
     & input {
-      border: 1px solid red;
+      border-color: red;
+      box-shadow: 0 0 2px fade_out(red, 0.5)
     }
     & .error {
       color: red;
