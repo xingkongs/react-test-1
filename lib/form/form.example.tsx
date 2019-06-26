@@ -3,11 +3,9 @@ import Form, {formValue} from "./form";
 import Validator from "./validator";
 import Button from "../button/button";
 const userNames = ["frank", "xingkongs", "bob", "alice"];
-//模拟异步校验
 const checkUserName = (name: string, succeed: () => void, fail: () => void) => {
     setTimeout(() => {
         if (userNames.indexOf(name) >= 0) {
-            console.log("我现在知道用户名是否存在了");
             succeed();
         } else {
             fail();
@@ -30,8 +28,8 @@ const FormExample: React.FunctionComponent = () => {
             {key: "name", minLength: 8, maxLength: 16},
             {key: "name", pattern: /^[A-Za-z0-9]+$/},
             {
-                key: "name", validator: {//自定义校验
-                    name: "require",
+                key: "name", validator: {
+                    name: "unique",
                     validate(name: string) {
                         return new Promise<void>((resolve, reject) => {
                             checkUserName(name, resolve, reject);
@@ -42,7 +40,6 @@ const FormExample: React.FunctionComponent = () => {
             {key: "password", required: true},
         ];
         Validator(formData, rules, (errors) => {
-            console.log(errors);
             setErrors(errors);
         });
     };
