@@ -46,12 +46,18 @@ const FormExample: React.FunctionComponent = () => {
     const onChange = (newValue: formValue) => {
         setFormData(newValue);
     };
+    const transformError = (message: string) => {
+        const map: any = {
+            unique: "用户名已存在"
+        };
+        return map[message];
+    };
     return (
         <div>
             <Form value={formData} fields={fields} buttons={[
                 <Button type="submit" value="ok"/>,
                 <Button type="reset" value="cancel"/>
-            ]} errors={errors} onSubmit={onSubmit} onChange={onChange}/>
+            ]} errors={errors} onSubmit={onSubmit} onChange={onChange} transformError={transformError}/>
         </div>
     );
 };

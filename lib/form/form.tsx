@@ -12,7 +12,8 @@ interface Props {
     onSubmit: React.FormEventHandler<HTMLFormElement>,
     onChange: (value: formValue) => void,
     errors: { [K: string]: string[] },
-    errorsDisplayMode?: "first" | "all"
+    errorsDisplayMode?: "first" | "all",
+    transformError?: (message: string) => string
 }
 const sc = scopedClassMaker("xrui-form");
 const Form: React.FunctionComponent<Props> = (props) => {
@@ -24,6 +25,14 @@ const Form: React.FunctionComponent<Props> = (props) => {
     const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         props.onSubmit(e);
+    };
+    const transformError = (message: string) => {
+        const map: any = {
+            required: "必填",
+            minLength: "太短",
+            maxLength: "太长",
+        };
+        return props.transformError && props.transformError(message) || map[message] || "未知错误";
     };
     return (
         <div>
@@ -42,8 +51,8 @@ const Form: React.FunctionComponent<Props> = (props) => {
                                     props.errorsDisplayMode === "first" ?
                                         props.errors[t.name][0] as any instanceof Promise ?
                                             "" :
-                                            props.errors[t.name][0] :
-                                        props.errors[t.name].join() : ""
+                                            transformError(props.errors[t.name][0]) :
+                                        props.errors[t.name].map(transformError).join() : ""
                                 }
                             </td>
                         </tr>

@@ -33,16 +33,16 @@ const Validator = (formValue: formValue, rules: FormRules, callback: (errors: an
             addErrors(rule.key, {message: rule.validator.name, promise});
         }
         if (rule.required && isEmpty(value)) {
-            addErrors(rule.key, {message: "必填"});
+            addErrors(rule.key, {message: "required"});
         }
         if (rule.minLength && !isEmpty(value) && value.length < rule.minLength) {
-            addErrors(rule.key, {message: "太短"});
+            addErrors(rule.key, {message: "minLength"});
         }
         if (rule.maxLength && !isEmpty(value) && value.length > rule.maxLength) {
-            addErrors(rule.key, {message: "太长"});
+            addErrors(rule.key, {message: "maxLength"});
         }
         if (rule.pattern && !isEmpty(value) && !(rule.pattern.test(value))) {
-            addErrors(rule.key, {message: "格式不匹配"});
+            addErrors(rule.key, {message: "pattern"});
         }
     });
     Promise.all(
