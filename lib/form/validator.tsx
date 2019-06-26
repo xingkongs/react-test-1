@@ -5,17 +5,18 @@ interface FormRule {
     minLength?: number,
     maxLength?: number
     pattern?: RegExp;
+    validator?: {
+        name: string,
+        validate: (value: string) => Promise<void>
+    }
 }
 type FormRules = Array<FormRule>
-interface FormErrors {
-    [K: string]: string
-}
 const isEmpty = (value: any) => {
     return value === undefined || value === null || value === "";
 };
-const Validator = (formValue: formValue, rules: FormRules): FormErrors => {
+const Validator = (formValue: formValue, rules: FormRules, callback: (errors: any) => void): void => {
     const errors: any = {};
-    const addErrors = (key: string, message: string) => {
+    const addErrors = (key: string, message: string | Promise<void>) => {
         if (errors[key] === undefined) {
             errors[key] = [];
         }
@@ -23,6 +24,10 @@ const Validator = (formValue: formValue, rules: FormRules): FormErrors => {
     };
     rules.map(rule => {
         const value = formValue[rule.key];
+        if (rule.validator) {
+            const promise = rule.validator.validate(value);
+            addErrors(rule.key, promise);
+        }
         if (rule.required && isEmpty(value)) {
             addErrors(rule.key, "必填");
         }
@@ -36,6 +41,24 @@ const Validator = (formValue: formValue, rules: FormRules): FormErrors => {
             addErrors(rule.key, "格式不匹配");
         }
     });
-    return errors;
+    Promise.all(flat(Object.values(errors)))
+        .then(() => {
+            callback(errors);
+            console.log("所有promise都成功了！");
+        }, () => {
+            callback(errors);
+            console.log("某一个promise失败了！");
+        });
 };
 export default Validator;
+function flat(array: Array<any>) {
+    const result: any = [];
+    array.map((item: any) => {
+        if (item instanceof Array) {
+            result.push(...item);
+        } else {
+            result.push(item);
+        }
+    });
+    return result;
+}

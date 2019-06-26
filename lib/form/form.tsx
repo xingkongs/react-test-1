@@ -20,7 +20,6 @@ const Form: React.FunctionComponent<Props> = (props) => {
     const onChange = (name: string, value: string, e: React.ChangeEvent<HTMLInputElement>) => {
         const newFormValue = {...formData, [name]: value};
         props.onChange(newFormValue);
-        console.log(e.target.value);
     };
     const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
@@ -41,7 +40,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
                             <td className={sc("td error")} key={t.name + "2"}>
                                 {props.errors[t.name] ?
                                     props.errorsDisplayMode === "first" ?
-                                        props.errors[t.name][0] :
+                                        props.errors[t.name][0] as any instanceof Promise ?
+                                            "" :
+                                            props.errors[t.name][0] :
                                         props.errors[t.name].join() : ""
                                 }
                             </td>
