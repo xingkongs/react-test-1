@@ -31,7 +31,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
                 {children}
             </div>
             <div className={sc("track")}>
-                <div className={sc("bar")} style={{height: barHeight, top: barTop}}/>
+                <div className={sc("bar")} style={{height: barHeight, transform: `translateY(${barTop}px)`}}/>
             </div>
         </div>
     );
