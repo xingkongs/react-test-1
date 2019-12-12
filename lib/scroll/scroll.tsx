@@ -11,8 +11,13 @@ const sc = scopedClassMaker("xrui-scroll");
 const Scroll: React.FunctionComponent<Props> = (props) => {
     const {children, ...reset} = props;
     const [barHeight, setBarHeight] = useState(0);
+    const [barTop, setBarTop] = useState(0);
     let onScroll: UIEventHandler = (e) => {
-        console.log(e);
+        const {current} = containRef;
+        const scrollHeight = current!.scrollHeight;
+        const viewHeight = current!.getBoundingClientRect().height;
+        const scrollTop = current!.scrollTop;
+        setBarTop(scrollTop * viewHeight / scrollHeight);
     };
     const containRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -26,7 +31,7 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
                 {children}
             </div>
             <div className={sc("track")}>
-                <div className={sc("bar")} style={{height: barHeight}}/>
+                <div className={sc("bar")} style={{height: barHeight, top: barTop}}/>
             </div>
         </div>
     );
