@@ -34,22 +34,26 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
         setBarHeight(viewHeight * viewHeight / scrollHeight);
     }, []);
     const containRef = useRef<HTMLDivElement>(null);
-    const daggerRef = useRef(false);
+    const draggingRef = useRef(false);
     const firstYRef = useRef(0);
     const firstBarTopRef = useRef(0);
     const onMouseDownBar: MouseEventHandler = (e) => {
-        daggerRef.current = true;
+        draggingRef.current = true;
         console.log(e.clientY);
         firstYRef.current = e.clientY;
         firstBarTopRef.current = barTop;
     };
     const onMouseUpBar = () => {
-        daggerRef.current = false;
+        draggingRef.current = false;
     };
     const onMouseMoveBar = (e: MouseEvent) => {
-        if (daggerRef.current) {
+        if (draggingRef.current) {
             const delta = e.clientY - firstYRef.current;
-            setBarTop(delta + firstBarTopRef.current);
+            const newBarTop = delta + firstBarTopRef.current;
+            setBarTop(newBarTop);
+            const scrollHeight = containRef.current!.scrollHeight;
+            const viewHeight = containRef.current!.getBoundingClientRect().height;
+            containRef.current!.scrollTop = newBarTop * scrollHeight / viewHeight;
         }
     };
     useEffect(() => {
