@@ -11,7 +11,16 @@ const sc = scopedClassMaker("xrui-scroll");
 const Scroll: React.FunctionComponent<Props> = (props) => {
     const {children, ...reset} = props;
     const [barHeight, setBarHeight] = useState(0);
-    const [barTop, setBarTop] = useState(0);
+    const [barTop, _setBarTop] = useState(0);
+    const setBarTop = (number: number) => {
+        const {current} = containRef;
+        const scrollHeight = current!.scrollHeight;
+        const viewHeight = current!.getBoundingClientRect().height;
+        const maxScrollTop = (scrollHeight - viewHeight) * viewHeight / scrollHeight;
+        if (number < 0) {return;}
+        if (number > maxScrollTop) {return;}
+        _setBarTop(number);
+    };
     let onScroll: UIEventHandler = (e) => {
         const {current} = containRef;
         const scrollHeight = current!.scrollHeight;
