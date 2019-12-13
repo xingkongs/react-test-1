@@ -1,4 +1,4 @@
-import React, {UIEventHandler, useState, useRef, useEffect} from "react";
+import React, {UIEventHandler, MouseEventHandler, useState, useRef, useEffect} from "react";
 import {scopedClassMaker} from "../helpers/classes";
 import "./scroll.scss";
 import scrollbarWidth from "./scroll-width";
@@ -19,11 +19,37 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
         const scrollTop = current!.scrollTop;
         setBarTop(scrollTop * viewHeight / scrollHeight);
     };
-    const containRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         const scrollHeight = containRef.current!.scrollHeight;
         const viewHeight = containRef.current!.getBoundingClientRect().height;
         setBarHeight(viewHeight * viewHeight / scrollHeight);
+    }, []);
+    const containRef = useRef<HTMLDivElement>(null);
+    const daggerRef = useRef(false);
+    const firstYRef = useRef(0);
+    const firstBarTopRef = useRef(0);
+    const onMouseDownBar: MouseEventHandler = (e) => {
+        daggerRef.current = true;
+        console.log(e.clientY);
+        firstYRef.current = e.clientY;
+        firstBarTopRef.current = barTop;
+    };
+    const onMouseUpBar = () => {
+        daggerRef.current = false;
+    };
+    const onMouseMoveBar = (e: MouseEvent) => {
+        if (daggerRef.current) {
+            const delta = e.clientY - firstYRef.current;
+            setBarTop(delta + firstBarTopRef.current);
+        }
+    };
+    useEffect(() => {
+        document.addEventListener("mouseup", onMouseUpBar);
+        document.addEventListener("mousemove", onMouseMoveBar);
+        return () => {
+            document.removeEventListener("mouseup", onMouseUpBar);
+            document.removeEventListener("mousemove", onMouseMoveBar);
+        };
     }, []);
     return (
         <div className={sc("")} {...reset}>
@@ -31,7 +57,10 @@ const Scroll: React.FunctionComponent<Props> = (props) => {
                 {children}
             </div>
             <div className={sc("track")}>
-                <div className={sc("bar")} style={{height: barHeight, transform: `translateY(${barTop}px)`}}/>
+                <div className={sc("bar")} onMouseDown={onMouseDownBar} style={{
+                    height: barHeight,
+                    transform: `translateY(${barTop}px)`
+                }}/>
             </div>
         </div>
     );
